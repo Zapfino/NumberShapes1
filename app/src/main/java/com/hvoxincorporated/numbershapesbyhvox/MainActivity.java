@@ -31,18 +31,21 @@ public class MainActivity extends AppCompatActivity {
     public void Result (View view) {
         Number custom = new Number();
         final EditText userNumber = (EditText) findViewById(R.id.UserNumber);
-        custom.Number = Long.parseLong(userNumber.getText().toString());
-        if (custom.square() && custom.triangular()) {
-            Toast.makeText(getApplicationContext(), custom.Number + " is a triangular number & a perfect square.", Toast.LENGTH_SHORT).show();}
-            else
-            if (custom.triangular()) {
-                Toast.makeText(getApplicationContext(), custom.Number + " is a triangular number.", Toast.LENGTH_LONG).show();}
-        else
-                if (custom.square()) {
-                    Toast.makeText(getApplicationContext(), custom.Number + " is a perfect square.", Toast.LENGTH_LONG).show();}
-        else Toast.makeText(getApplicationContext(), custom.Number + " is neither a triangular number nor a perfect square.", Toast.LENGTH_LONG).show();
+        if (userNumber.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please enter a number.", Toast.LENGTH_LONG).show();
+        } else {
+            custom.Number = Long.parseLong(userNumber.getText().toString());
+            if (custom.square() && custom.triangular()) {
+                Toast.makeText(getApplicationContext(), custom.Number + " is a triangular number & a perfect square.", Toast.LENGTH_SHORT).show();
+            } else if (custom.triangular()) {
+                Toast.makeText(getApplicationContext(), custom.Number + " is a triangular number.", Toast.LENGTH_LONG).show();
+            } else if (custom.square()) {
+                Toast.makeText(getApplicationContext(), custom.Number + " is a perfect square.", Toast.LENGTH_LONG).show();
+            } else
+                Toast.makeText(getApplicationContext(), custom.Number + " is neither a triangular number nor a perfect square.", Toast.LENGTH_LONG).show();
 
         }
+    }
 
 
     @Override
